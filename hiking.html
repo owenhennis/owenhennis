@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Hiking
+        </title>
+        <link rel="stylesheet" href="../styles/layoutstyles.css">
+    </head>
+    <body class="indexbody hiking-background">
+        <div class="dropdown-container" id="dropdownContainer">
+            <button class="dropdown-btn" onclick="toggleDropdown()">Menu</button>
+            <div class="dropdown-content">
+                <a href="owenhennis.home.html">Home</a>
+                <a href="owenhennis.traveling.html">Travel</a>
+                <a href="owenhennis.soccer.html">Soccer</a>
+                <a href="owenhennis.hiking.html">Hiking</a>
+                <a href="owenhennis.resume.html">Resume</a>
+            </div>
+        </div>
+
+        <div class="header">
+        <h1>Hiking</h1><br>
+        </div>
+        <div class="content">
+            <div class="left travel-text-column">
+                <section class="about-container travel-story">
+                    <p>
+                    I grew up going on hikes with my parents, and I loved being outdoors to climb on things, jump around, and be outside in the sun. As a child, the outdoors was my ultimate playground—a place to climb, jump, and discover. I took my role as a 'Junior Ranger' at National Parks seriously, developing an early commitment to environmental stewardship and active exploration. Nowadays, hiking is one of my favorite things to do with friends. It's a great way to go out and see what nature has to offer. Lately I've enjoyed visiting national parks, checking different ones off as I go. In the future I hope to continue to travel to new places and parks, and to continue to explore the outdoors with friends and family.
+                    </p>
+                </section>
+            </div>
+            <div class="slideshow-container hiking-slider-container">
+                <div class="slideshow">
+                    <img src="../image/glacier hike 2.JPG" alt="Glacier National Park, Montana">
+                    <img src="../image/arches.JPG" alt="Arches National Park, Utah">
+                    <img src="../image/mauna kea.jpeg" alt="Mauna Kea, Hawaii">
+                    <img src="../image/chichanitza.JPG" alt="Chichen Itza, Mexico" class="bottom-focus">
+                    <img src="../image/glacier hike.JPG" alt="Glacier National Park, Montana">                  
+                    <img src="../image/garden of the gods.jpg" alt="Garden of the Gods, Colorado">
+                    <img src="../image/chataqua.JPG" alt="Chautauqua Park, Colorado">
+                    <img src="../image/mount spokane.JPG" alt="Mount Spokane, Washington">
+                    <img src="../image/silver falls.JPG" alt="Silver Falls State Park, Oregon">
+                    <img src="../image/tetons hike.JPG" alt="Grand Tetons, Wyoming">
+                    <img src="../image/napali coast hike.JPG" alt="Napali Coast, Kauai, Hawaii">
+                    <img src="../image/heystack rock, oregon coast.JPG" alt="Heystack Rock, Oregon Coast, Oregon" class="left-focus">
+                    <img src="../image/mesa verde.JPG" alt="Mesa Verde, Colorado">
+                    <img src="../image/sandpoint.jpeg" alt="Sandpoint, Idaho">
+                    <img src="../image/virgin islands.jpeg" alt="Virgin Islands, Caribbean">
+                    <img src="../image/Volcanos National Park.jpg" alt="Volcanos National Park, Hawaii">
+                    
+                    
+                </div>
+                <div class="caption"></div>
+                <div class="slide-control-wrap">
+                    <input id="photoSlider" class="slide-control" type="range" min="0" max="0" step="1" value="0" aria-label="Hiking photo slider">
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        function toggleDropdown() {
+            var dropdown = document.getElementById('dropdownContainer');
+            dropdown.classList.toggle('active');
+        }
+
+        document.addEventListener('click', function(event) {
+            var dropdown = document.getElementById('dropdownContainer');
+            if (!dropdown.contains(event.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+
+        // Slideshow script
+        let slides = document.querySelectorAll('.slideshow img');
+        const slider = document.getElementById('photoSlider');
+        let slideIndex = 0;
+        let autoSlideTimer;
+        
+        function showSlide(index) {
+            if (index < 0) index = 0;
+            if (index >= slides.length) index = slides.length - 1;
+
+            slides.forEach((slide) => {
+                slide.classList.remove('active');
+            });
+
+            slides[index].classList.add('active');
+            document.querySelector('.caption').textContent = slides[index].alt;
+            slider.value = index;
+            slideIndex = index;
+        }
+
+        function resetAutoSlide() {
+            clearInterval(autoSlideTimer);
+            autoSlideTimer = setInterval(() => {
+                slideIndex += 1;
+                if (slideIndex >= slides.length) slideIndex = 0;
+                showSlide(slideIndex);
+            }, 10000);
+        }
+
+        slider.max = String(slides.length - 1);
+        slider.addEventListener('input', function() {
+            showSlide(Number(this.value));
+            resetAutoSlide();
+        });
+        
+        showSlide(0);
+        resetAutoSlide();
+    </script>
+</html>

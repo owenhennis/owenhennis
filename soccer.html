@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Soccer
+        </title>
+        <link rel="stylesheet" href="../styles/layoutstyles.css">
+    </head>
+    <body id="top" class="indexbody soccer-background">
+        <div class="dropdown-container" id="dropdownContainer">
+            <button class="dropdown-btn" onclick="toggleDropdown()">Menu</button>
+            <div class="dropdown-content">
+                <a href="owenhennis.home.html">Home</a>
+                <a href="owenhennis.traveling.html">Travel</a>
+                <a href="owenhennis.soccer.html">Soccer</a>
+                <a href="owenhennis.hiking.html">Hiking</a>
+                <a href="owenhennis.resume.html">Resume</a>
+            </div>
+        </div>
+
+        <div class="header">
+        <h1>Soccer</h1><br>
+        </div>
+
+        <div class="soccer-scroll-gallery">
+            <section class="soccer-scroll-item left soccer-intro is-visible">
+                <div class="soccer-media-card">
+                    <img src="../image/soccer rapids 2.JPG" alt="Soccer Rapids 2">
+                </div>
+                <aside class="about-container soccer-intro-text">
+                    <p>
+                        Soccer has been the most influential part of my life. I started playing when I was four, starting at the Junior Rapids, and then playing for the Arvada Edge for the rest of my club career. I've had memorable laughs, goals, injuries, and heartbreaks, but I'm thankful for every single moment. It's given me lifelong friends, unforgettable memories, and above all it's shaped who I am as a person today.
+                    </p>
+                </aside>
+            </section>
+            <section class="soccer-scroll-item right">
+                <div class="soccer-media-card">
+                    <video src="../image/soccer backheel.mov" muted playsinline loop preload="metadata"></video>
+                </div>
+            </section>
+            <section class="soccer-scroll-item left">
+                <div class="soccer-media-card">
+                    <video src="../image/soccer assist.mov" muted playsinline loop preload="metadata"></video>
+                </div>
+            </section>
+            <section class="soccer-scroll-item right">
+                <div class="soccer-media-card">
+                    <img src="../image/soccer coaches.jpg" alt="Soccer Coaches">
+                </div>
+            </section>
+            <section class="soccer-scroll-item left">
+                <div class="soccer-media-card">
+                    <img src="../image/soccer college.jpeg" alt="Soccer College">
+                </div>
+            </section>
+            <section class="soccer-scroll-item right">
+                <div class="soccer-media-card">
+                    <img src="../image/soccer edge.JPG" alt="Soccer Edge">
+                </div>
+            </section>
+            <section class="soccer-scroll-item left">
+                <div class="soccer-media-card">
+                    <img src="../image/soccer freshman.JPG" alt="Soccer Freshman Year">
+                </div>
+            </section>
+            <section class="soccer-scroll-item right">
+                <div class="soccer-media-card">
+                    <video src="../image/soccer goal.mov" muted playsinline loop preload="metadata"></video>
+                </div>
+            </section>
+            <section class="soccer-scroll-item left">
+                <div class="soccer-media-card">
+                    <video src="../image/soccer highschool goal.mov" muted playsinline loop preload="metadata"></video>
+                </div>
+            </section>
+            <section class="soccer-scroll-item right">
+                <div class="soccer-media-card">
+                    <img src="../image/soccer junior.jpg" alt="Soccer Junior Year">
+                </div>
+            </section>
+            <section class="soccer-scroll-item left">
+                <div class="soccer-media-card">
+                    <img src="../image/soccer middle school.jpg" alt="Soccer Middle School">
+                </div>
+            </section>
+            <section class="soccer-scroll-item right">
+                <div class="soccer-media-card">
+                    <img src="../image/soccer playoffs.jpg" alt="Soccer Playoffs">
+                </div>
+            </section>
+            <section class="soccer-scroll-item left">
+                <div class="soccer-media-card">
+                    <img src="../image/soccer rapids.jpeg" alt="Soccer Rapids">
+                </div>
+            </section>
+            <section class="soccer-scroll-item right">
+                <div class="soccer-media-card">
+                    <img class="media-top-focus" src="../image/soccer real cup.JPG" alt="Soccer Real Cup">
+                </div>
+            </section>
+            <section class="soccer-scroll-item left">
+                <div class="soccer-media-card">
+                    <img src="../image/soccer semi.jpeg" alt="Soccer Semi">
+                </div>
+            </section>
+            <section class="soccer-scroll-item right">
+                <div class="soccer-media-card">
+                    <img src="../image/soccer senior.jpeg" alt="Soccer Senior Year">
+                </div>
+            </section>
+            <section class="soccer-scroll-item left">
+                <div class="soccer-media-card">
+                    <img src="../image/soccer sophomore.jpg" alt="Soccer Sophomore Year">
+                </div>
+            </section>
+            <section class="soccer-scroll-item right">
+                <div class="soccer-media-card">
+                    <img src="../image/soccer state cup.JPG" alt="Soccer State Cup">
+                </div>
+            </section>
+            <section class="soccer-scroll-item right">
+                <div class="soccer-media-card">
+                    <img src="../image/soccer.JPG" alt="Soccer">
+                </div>
+            </section>
+        </div>
+
+        <div class="back-to-top-wrap">
+            <a class="back-to-top-link" href="#top">Back to top</a>
+        </div>
+
+    </body>
+    <script>
+        function toggleDropdown() {
+            var dropdown = document.getElementById('dropdownContainer');
+            dropdown.classList.toggle('active');
+        }
+        document.addEventListener('click', function(event) {
+            var dropdown = document.getElementById('dropdownContainer');
+            if (!dropdown.contains(event.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+
+        const scrollItems = document.querySelectorAll('.soccer-scroll-item');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                const media = entry.target.querySelector('img, video');
+
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    if (media && media.tagName === 'VIDEO') {
+                        media.play().catch(() => {});
+                    }
+                } else {
+                    entry.target.classList.remove('is-visible');
+                    if (media && media.tagName === 'VIDEO') {
+                        media.pause();
+                        media.currentTime = 0;
+                    }
+                }
+            });
+        }, {
+            threshold: 0.55
+        });
+
+        scrollItems.forEach((item) => observer.observe(item));
+    </script>
+</html>

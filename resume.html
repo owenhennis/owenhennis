@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head> <!--head tags are the instructions for browser-->
+        <title>
+            Resume
+        </title>
+       
+        <link rel="stylesheet" href="../styles/layoutstyles.css">
+    </head>
+    <body class="resumebody resume-background"> 
+        <div class="dropdown-container" id="dropdownContainer">
+            <button class="dropdown-btn" onclick="toggleDropdown()">Menu</button>
+            <div class="dropdown-content">
+                <a href="owenhennis.home.html">Home</a>
+                <a href="owenhennis.traveling.html">Travel</a>
+                <a href="owenhennis.soccer.html">Soccer</a>
+                <a href="owenhennis.hiking.html">Hiking</a>
+                <a href="owenhennis.resume.html">Resume</a>
+            </div>
+        </div>
+
+        <div class="header">
+        <h1>Resume and Contact Information</h1><br>
+        </div>
+        
+        <div class="resume-container">
+            <div class="resume-text">
+                <div class="resume-contact-card">
+                    <h2>Owen Hennis</h2>
+                    <p>
+                        14234 West 86th Drive • Arvada, Colorado 80005<br>
+                        303.503.2064 • owenphennis@gmail.com
+                    </p>
+                </div>
+            </div>
+            <div class="resume-doc">
+                <img class="resume-preview-image" src="../image/resume swap.jpg" alt="Resume Preview">
+                <div class="resume-download-wrap">
+                    <a class="resume-download" href="../image/resume - owen hennis.pdf" download>Download PDF</a>
+                </div>
+            </div>
+        </div>
+    <script>
+        function toggleDropdown() {
+            var dropdown = document.getElementById('dropdownContainer');
+            dropdown.classList.toggle('active');
+        }
+        document.addEventListener('click', function(event) {
+            var dropdown = document.getElementById('dropdownContainer');
+            if (!dropdown.contains(event.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+    </script>
+    </body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Travel
+        </title>
+        <link rel="stylesheet" href="../styles/layoutstyles.css">
+    </head>
+    <body class="indexbody travel-background">
+        <div class="dropdown-container" id="dropdownContainer">
+            <button class="dropdown-btn" onclick="toggleDropdown()">Menu</button>
+            <div class="dropdown-content">
+                <a href="owenhennis.home.html">Home</a>
+                <a href="owenhennis.traveling.html">Travel</a>
+                <a href="owenhennis.soccer.html">Soccer</a>
+                <a href="owenhennis.hiking.html">Hiking</a>
+                <a href="owenhennis.resume.html">Resume</a>
+            </div>
+        </div>
+
+        <div class="header">
+        <h1>Travel</h1><br>
+        </div>
+
+        <div class="content">
+            <div class="left travel-text-column">
+                <section class="about-container travel-story">
+                    <p>
+                        Traveling is my favorite thing to do in the world. I love going to a new place and exploring it to the most of my capability. Not only is it the place, but it's also the people that you go with, and the memories that are made together. One feeling that I really enjoy is looking back at pictures that were taken and seeing the smiles and cool places. These travels have shaped my perspective, teaching me that every new location is an opportunity to learn about culture, traditions, and geography. I have been fortunate enough to go to some amazing places, and I can't wait to see where I will go in the future.
+                    </p>
+                </section>
+            </div>
+            <div class="slideshow-container">
+                <div class="slideshow">
+                    <img src="../image/bahamas.JPG" alt="Bahamas">
+                    <img src="../image/big sky.JPG" alt="Big Sky, Montana">
+                    <img src="../image/boston.jpg" alt="Boston, Massachusetts">
+                    <img src="../image/cancun.jpeg" alt="Cancun, Mexico">
+                    <img src="../image/damar.jpg" alt="Damar, Kansas">
+                    <img src="../image/disney.jpg" alt="Disney World, Florida">                    
+                    <img src="../image/dry tortugas.JPG" alt="Dry Tortugas, Florida">
+                    <img src="../image/four corners.jpg" alt="Four Corners, USA">
+                    <img src="../image/hanelei bay.JPG" alt="Hanelei Bay, Hawaii">
+                    <img src="../image/eiffel tower.JPG" alt="Eiffel Tower, France">
+                    <img src="../image/london eye.JPG" alt="London Eye, England">
+                    <img src="../image/tetons 2.JPG" alt="Grand Tetons, Wyoming">
+                    <img src="../image/yellowstone.jpg" alt="Yellowstone, Wyoming">
+                    <img src="../image/disney.jpeg" alt="Disney World, Florida">
+                    <img src="../image/lake louise, banff.JPG" alt="Lake Louise, Banff, Canada">
+                    <img src="../image/napali coast, kauai.jpeg" alt="Napali Coast, Kauai, Hawaii">
+                    <img src="../image/new york.jpg" alt="New York, New York">
+                    <img src="../image/santa monica pier, california.JPG" alt="Santa Monica Pier, California">
+                    <img src="../image/wembly stadium, london.jpeg" alt="Wembley Stadium, London">
+                    
+                </div>
+                <div class="caption"></div>
+                <div class="dots"></div>
+                <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+                <button class="next" onclick="changeSlide(1)">&#10095;</button>
+            </div>
+        </div>
+    </body>
+    <script>
+        function toggleDropdown() {
+            var dropdown = document.getElementById('dropdownContainer');
+            dropdown.classList.toggle('active');
+        }
+        document.addEventListener('click', function(event) {
+            var dropdown = document.getElementById('dropdownContainer');
+            if (!dropdown.contains(event.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+
+        // Slideshow script
+        let slides = document.querySelectorAll('.slideshow img');
+        let slideIndex = 0;
+        let autoSlideTimer;
+        
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                dots[i].classList.remove('active');
+            });
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            document.querySelector('.caption').textContent = slides[index].alt;
+            slideIndex = index;
+        }
+        
+        function changeSlide(n) {
+            slideIndex += n;
+            if (slideIndex >= slides.length) slideIndex = 0;
+            if (slideIndex < 0) slideIndex = slides.length - 1;
+            showSlide(slideIndex);
+            resetAutoSlide();
+        }
+
+        function goToSlide(index) {
+            showSlide(index);
+            resetAutoSlide();
+        }
+
+        function resetAutoSlide() {
+            clearInterval(autoSlideTimer);
+            autoSlideTimer = setInterval(() => {
+                slideIndex += 1;
+                if (slideIndex >= slides.length) slideIndex = 0;
+                showSlide(slideIndex);
+            }, 10000);
+        }
+        
+        // Create dots
+        const dotsContainer = document.querySelector('.dots');
+        let dots = [];
+        slides.forEach((_, i) => {
+            const dot = document.createElement('span');
+            dot.classList.add('dot');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+            dots.push(dot);
+        });
+        
+        showSlide(0);
+        resetAutoSlide();
+    </script>
+</html>

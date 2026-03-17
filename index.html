@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Home Page
+        </title>
+        <link rel="stylesheet" href="../styles/layoutstyles.css">
+    </head>
+    <body class="indexbody home-background">
+        <div class="dropdown-container" id="dropdownContainer">
+            <button class="dropdown-btn" onclick="toggleDropdown()">Menu</button>
+            <div class="dropdown-content">
+                <a href="owenhennis.home.html">Home</a>
+                <a href="owenhennis.traveling.html">Travel</a>
+                <a href="owenhennis.soccer.html">Soccer</a>
+                <a href="owenhennis.hiking.html">Hiking</a>
+                <a href="owenhennis.resume.html">Resume</a>
+            </div>
+        </div>
+
+        <div class="header">
+        <h1>Home</h1><br>
+        </div>
+        
+
+        <section class="about-container home-about">
+            <h2>About Me</h2>
+            <p>
+                I grew up in Arvada, Colorado, and at a young age, I learned how to find enjoyment in everything. I love being outside, whether it's playing sports, hiking, running, biking, or snowboarding. I have always had a passion for traveling, sightseeing, and exploring new places. I've been involved in sports my whole life, starting soccer at age four; it's been a huge part of my life, giving me lifelong friends and memories. I'm a very social guy—I like talking to people, and I'm great at developing communities, whether through sports, at work, with friends, or even with strangers. 
+
+    </body>
+    <script>
+        function toggleDropdown() {
+            var dropdown = document.getElementById('dropdownContainer');
+            dropdown.classList.toggle('active');
+        }
+        document.addEventListener('click', function(event) {
+            var dropdown = document.getElementById('dropdownContainer');
+            if (!dropdown.contains(event.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+    </script>
+</html>
